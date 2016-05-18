@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<f:view>
+    <h1>${bookController.book.title}</h1>
+    <h2>Dettagli libro:</h2>
+    <div><strong>Autore</strong>: ${bookController.book.author}</div>
+    <div><strong>Data di pubblicazione</strong>: ${bookController.book.publicationTime}</div>
+    <div><strong>Stato</strong>: ${bookController.book.status}</div>
+    <h:form><h:commandLink action="#{bookController.libraryBooks}" value="Libreria"></h:commandLink></h:form>
+</f:view>
+</body>
+</html>

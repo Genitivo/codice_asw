@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://www.w3.org/1999/XSL/Transform">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<f:view>
+    <h:form>
+    <h1>Riepilogo prestito N: #{prestitoController.getPrestito().id} dello studente #{prestitoController.getPrestito().getStudent_id().name}</h1>
+        <c:if test="#{prestitoController.prestito.getEndTime()!=null}">
+            <h2>Prestito concluso in data #{prestitoController.getPrestito().getEndTime()}</h2>
+        </c:if>
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Titolo Libro    </th>
+                <th>Autore Libro    </th>
+                <th>Anno di pubblicazione   </th>
+                <th>Stato</th>
+            </tr>
+            </thead>
+            <ui:repeat value="#{prestitoController.prestito.getBooks()}" var="book">
+                <tr>
+                    <td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td>${book.publicationTime}</td>
+                    <td>${book.status}</td>
+                    <c:if test="#{book.status!='Libero'}">
+                        <td><h:commandLink action="#{bookController.giveBack(book)}"
+                                           value="Restituisci libro">
+                        </h:commandLink></td></c:if>
+                </tr>
+            </ui:repeat>
+        </table>
+        <div><h:link value="HomePage" outcome="index" /></div>
+        <c:if test="#{prestitoController.checkPrestito()==true and prestitoController.prestito.getEndTime()==null}">
+        <div><h:commandLink action="#{prestitoController.endPrestito}" value="Termina Prestito"></h:commandLink></div>
+        </c:if>
+    </h:form>
+</f:view>
+</body>
+</html>

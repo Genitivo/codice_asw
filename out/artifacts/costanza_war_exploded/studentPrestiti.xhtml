@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<f:view>
+    <h1> Riepilogo prestiti di #{studentController.student.name} </h1>
+    <h:form>
+        <table class="table table-striped">
+            <tr>
+                <th>Data di inzio prestito  </th>
+                <th>Data di fine prestito </th>
+                <th>Stato </th>
+                <th>Dettagli Prestito</th>
+            </tr>
+            <ui:repeat value="#{studentController.prestiti}" var="prestito">
+                <tr>
+                    <td>${prestito.creationTime}</td>
+                    <td>${prestito.endTime}</td>
+                    <td>${prestito.status}</td>
+                    <td><h:commandLink action="#{prestitoController.findPrestito(prestito.id)}" value="Dettagli"></h:commandLink></td>
+                </tr>
+            </ui:repeat>
+        </table>
+        <div><h:commandLink action="#{prestitoController.createPrestito(studentController.student)}" value="Fai un prestito"></h:commandLink></div>
+        <div><h:link value="Cerca uno studente" outcome="students" /></div>
+    </h:form>
+</f:view>
+</body>
+</html>

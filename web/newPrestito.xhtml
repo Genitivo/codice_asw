@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<f:view>
+    <h1> Prestito effettuato da :</h1>
+    <div><strong>Nome studente</strong>: ${prestitoController.student_id.name}</div>
+    <div><strong>Data di inizio prestito</strong> : ${prestitoController.creationTime}</div>
+    <div>
+        <h:form>
+            <h:commandLink value="Seleziona i libri presi in prestito" action="#{bookController.books}" />
+        </h:form>
+    </div>
+</f:view>
+</body>
+</html>

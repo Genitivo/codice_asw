@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<f:view>
+    <h:form styleClass="form-horizontal">
+        <h1>Inserisci i dati dello studente</h1>
+
+        <div><strong>Nome e Cognome</strong>: <h:inputText value="#{studentController.name}"
+                                                 styleClass="form-control"
+                                required="true"
+                                requiredMessage="Name is mandatory" id="name"/> <strong><h:message for="name" /></strong>
+        </div>
+        <div><strong>Università</strong>: <h:inputText value="#{studentController.university}"
+                                                     styleClass="form-control"
+                                 required="true"
+                                 requiredMessage="University is mandatory" id="university"/> <h:message for="university" />
+        </div>
+
+        <div>
+            <h:commandButton value="Submit"  styleClass="btn btn-default" action="#{studentController.createStudent}"/>
+        </div>
+    </h:form>
+</f:view>
+</body>
+</html>
